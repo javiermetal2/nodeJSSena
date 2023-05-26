@@ -22,7 +22,7 @@ res.send("Hola Mundo ¡¡¡¡¡");
 // conexion a la DB ( base de datos ) -----------------------------------
 // Prueba 1 -------------------------------------------------------------
 mongoose.connect(
-    "mongodb+srv://javiermetal2:U2xGWEQjBrodkdlD@Cluster0.djoycg7.mongodb.net/?retryWrites=true&w=majority", 
+    "mongodb+srv://javiermetal2:U2xGWEQjBrodkdlD@cluster0.djoycg7.mongodb.net/?retryWrites=true&w=majority", 
      {
         useNewUrlParser:true, 
         useUnifiedTopology:true, 

@@ -1,1 +1,41 @@
-<p>user works!</p>
+<div class="container">
+    <div class="row">
+        <div class="col s5">
+            <div class="card">
+                <div class="card-content">
+                    <form #userForm="ngForm" (ngSubmit)="addUser(userForm)">
+                        <div class="row">
+                            <div class="input-field col-s12">
+                                <input type="text" name="name" #name="ngModel"
+                                    [(ngModel)]="userService.selectedUser.name" placeholder="Ingrese su nombre">
+                            </div>
+                            <div class="input-field col-s12">
+                                <input type="text" name="username" #position="ngModel"
+                                    [(ngModel)]="userService.selectedUser.username"
+                                    placeholder="Ingrese su username">
+                            </div>
+                            <div class="input-field col-s12">
+                                <input type="text" name="password" #office="ngModel"
+                                    [(ngModel)]="userService.selectedUser.password"
+                                    placeholder="Ingrese su password">
+                            </div>
+                           
+                            <div class="card-action">
+                                <div class="input-field col s12">
+                                    <button class="btn right" (click)="resetForm(userForm)">Limpiar</button>
+                                    <button class="btn">Guardar</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col s7">
+
+
+        </div>
+    </div>
+</div>

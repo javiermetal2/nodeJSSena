@@ -22,11 +22,7 @@ return this.http.get < User[] > (this.URL_API);
 }
 
 PostUser(euser:User) {
-if (euser._id === "") {return this.http.post(this.URL_API, euser); 
-}else {
-return this.http.put(this.URL_API + "/"+euser._id, euser);
-}
-
+return this.http.post(this.URL_API, euser); 
 }
 
 putUser(eUser:User) {

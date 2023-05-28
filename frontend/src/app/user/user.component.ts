@@ -8,17 +8,19 @@ declare var M:any;
 selector:'app-user', 
 templateUrl:'./user.component.html', 
 styleUrls:['./user.component.css'], 
- providers: [UserService]
+providers:[UserService]
 })
 export class UserComponent implements OnInit {
-
+users:User[] = []; 
 constructor(public userService:UserService) {}
 
 ngOnInit():void {
+this.getUsers(); 
 }
 
 addUser(form?:NgForm) {
 //console.log(form?.value);
+
 this.userService.PostUser(form?.value)
 //.subscribe(res => {console.log(res)});
 .subscribe(res =>  {
@@ -31,7 +33,24 @@ resetForm(form?:NgForm) {// Limpiar el formulario, recibe un formulario como par
 if (form) {
 form.reset(); 
 this.userService.selectedUser = new User(); 
+this.getUsers(); 
 }
+}
+
+getUsers():void {
+this.userService.getUsers()
+.subscribe(users => this.users = users); 
+}
+
+delete(user:User):void {
+this.users = this.users.filter(h => h !== user); 
+this.userService.deleteUser(user._id).subscribe(); 
+}
+
+edit(user:User, form?:NgForm):void {
+
+form?.control.patchValue(user); 
+console.log(form); 
 }
 
 }

@@ -1,5 +1,5 @@
 import {Injectable }from '@angular/core'; 
-import { HttpClient } from '@angular/common/http';
+import {HttpClient }from '@angular/common/http'; 
 import {User }from '../models/user'; 
 
 @Injectable( {
@@ -18,11 +18,15 @@ this.users = [];
 }
 
 getUsers() {
-return this.http.get(this.URL_API); 
+return this.http.get < User[] > (this.URL_API); 
 }
 
 PostUser(euser:User) {
-return this.http.post(this.URL_API, euser); 
+if (euser._id === "") {return this.http.post(this.URL_API, euser); 
+}else {
+return this.http.put(this.URL_API + `/$ {euser._id}`, euser);
+}
+
 }
 
 putUser(eUser:User) {

@@ -4,6 +4,7 @@ import {NgForm }from '@angular/forms';
 import {User }from '../models/user'; 
 
 declare var M:any; 
+
 @Component( {
 selector:'app-user', 
 templateUrl:'./user.component.html', 
@@ -25,7 +26,9 @@ this.userService.PostUser(form?.value)
 //.subscribe(res => {console.log(res)});
 .subscribe(res =>  {
 this.resetForm(form); 
-M.toast( {html:'Usuario agregado o editado correctamente'}); 
+var toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Usuario agregado o editado correctamente</button>'; 
+M.toast( {html:toastHTML}); 
+
 }); 
 }
 
@@ -42,16 +45,17 @@ this.userService.getUsers()
 .subscribe(users => this.users = users); 
 }
 
-delete(user:User):void {
+delete(user:User, form?:NgForm):void {
 this.users = this.users.filter(h => h !== user); 
-this.userService.deleteUser(user._id).subscribe(); 
-M.toast( {html:'Usuario eliminado correctamente'});
+this.userService.deleteUser(user._id ! ).subscribe(); 
+var toastHTML = '<span>I am toast content</span><button class="btn-flat toast-action">Usuario eliminado correctamente</button>'; 
+M.toast( {html:toastHTML}); 
+this.resetForm(form); 
+this.getUsers(); 
 }
 
 edit(user:User, form?:NgForm):void {
-
 form?.control.patchValue(user); 
-console.log(form); 
 }
 
 }

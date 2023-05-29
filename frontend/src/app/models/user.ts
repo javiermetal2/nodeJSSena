@@ -7,7 +7,7 @@ export class User {
         this.updatedAt = updatedAt;
       }
       
-    _id: string; // Sub guión id porque los datos van a venir de MOngodb
+    _id?: string; // Sub guión id porque los datos van a venir de MOngodb
     name: string;
     username: string;
     password: string;

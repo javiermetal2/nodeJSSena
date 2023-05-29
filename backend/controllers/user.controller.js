@@ -34,7 +34,7 @@ userCtrl.userEdit = async (req, res) =>  {
 
 userCtrl.deleteUser = async (req, res) =>  {
       await User.findByIdAndDelete(req.params.id); 
-      res.json( {status:'User Deleted'}); 
+      res.json( {status:'User Deleted'});
    }
 
    //exporto el módulo

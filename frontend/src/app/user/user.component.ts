@@ -25,7 +25,7 @@ this.userService.PostUser(form?.value)
 //.subscribe(res => {console.log(res)});
 .subscribe(res =>  {
 this.resetForm(form); 
-M.toast( {html:'Usuario agregado correctamente'}); 
+M.toast( {html:'Usuario agregado o editado correctamente'}); 
 }); 
 }
 
@@ -45,6 +45,7 @@ this.userService.getUsers()
 delete(user:User):void {
 this.users = this.users.filter(h => h !== user); 
 this.userService.deleteUser(user._id).subscribe(); 
+M.toast( {html:'Usuario eliminado correctamente'});
 }
 
 edit(user:User, form?:NgForm):void {

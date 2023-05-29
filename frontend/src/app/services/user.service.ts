@@ -22,11 +22,15 @@ return this.http.get < User[] > (this.URL_API);
 }
 
 PostUser(euser:User) {
+if (euser._id == "") {
 return this.http.post(this.URL_API, euser); 
+}else {
+return this.putUser(euser); 
+}
 }
 
 putUser(eUser:User) {
-return this.http.put(this.URL_API  + "/"+ eUser._id, eUser); // se utiliza la version de ecmascript, debemos darle el id del User
+return this.http.put(this.URL_API + "/" + eUser._id, eUser); // se utiliza la version de ecmascript, debemos darle el id del User
 }
 
 deleteUser(_id:string) {// Solo necesito el id, no todo lo del User
